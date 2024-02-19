@@ -24,17 +24,17 @@
         <div class="ms-auto">
           <ul class="navbar-nav me-5 mb-2 mb-lg-0">
             <li class="nav-item">
-              <a class="nav-link" aria-current="page" href="{{route('taskjunior.index')}}"
+              <a class="nav-link" aria-current="page" href="{{url('/index')}}"
                 >Discover</a
               >
             </li>
           </ul>
         </div>
-        <a class="navbar-brand" href="{{route('taskjunior.index')}}">SoundShare</a>
+        <a class="navbar-brand" href="{{url('/index')}}">SoundShare</a>
         <div class="me-auto">
           <ul class="navbar-nav ms-5 mb-2 mb-lg-0">
             <li class="nav-item">
-              <a class="nav-link active" href="./share.html">Share</a>
+              <a class="nav-link active" href="{{url('/index/share')}}">Share</a>
             </li>
           </ul>
         </div>
@@ -45,7 +45,7 @@
       <div class="row">
         <div class="col-md-6 mx-auto">
           <h2 class="text-center mb-4">Share your Song</h2>
-          <form action="{{route('store.song')}}" method="post">
+          <form action="{{url('/index')}}" method="post">
             @csrf
             @method('post')
             <div class="form-group">

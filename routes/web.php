@@ -14,7 +14,7 @@ use App\Http\Controllers\SongController;
 |
 */
 
-Route::get('/index', [SongController::class,'index'])->name('taskjunior.index'); // we need to pass data from the create form to the index page in order to show it 
+Route::get('/index', [SongController::class,'index'])->name('home'); // we need to pass data from the create form to the index page in order to show it 
 Route::get('/index/{songdetails}/song',[SongController::class,'contenu'])->name('song');
 Route::get('/index/share',[SongController::class,'addsong'])->name('create');
-Route::post('/index',[SongController::class,'store'])->name('store.song');
+Route::post('/index',[SongController::class,'store'])->name('store');

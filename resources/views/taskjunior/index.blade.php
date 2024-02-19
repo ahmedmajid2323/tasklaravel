@@ -120,16 +120,17 @@
         <div class="ms-auto">
           <ul class="navbar-nav me-5 mb-2 mb-lg-0">
             <li class="nav-item">
-              <a class="nav-link active" aria-current="page" href="./index.html"
-                >Discover</a>
+                <a class="nav-link" aria-current="page" href="{{url('/index')}}"
+                >Discover</a
+              >
             </li>
           </ul>
         </div>
-        <a class="navbar-brand" href="./index.html">SoundShare</a>
+        <a class="navbar-brand" href="{{url('/index')}}">SoundShare</a>
         <div class="me-auto">
           <ul class="navbar-nav ms-5 mb-2 mb-lg-0">
             <li class="nav-item">
-              <a class="nav-link" href="{{route('create')}}">Share</a>
+              <a class="nav-link active" href="{{url('/index/share')}}">Share</a>
             </li>
           </ul>
         </div>
@@ -149,10 +150,11 @@
     <section class="songs container py-5">
       <div class="row">
       @foreach($addedsong as $songadded)
-        @if($songadded->platform === 'Youtube')
+        
         <div
           class="col-12 col-md-6 col-lg-4 my-4 d-flex justify-content-center align-items-center"
         >
+         @if($songadded->platform=="youtube")
           <div class="card my-4 mx-2 youtube-background song-card">
             <div class="card-body">
               <a href="{{route('song',['songdetails'=>$songadded])}}"> <!--songdetails is the one in {} at in the url (route)-->
@@ -169,43 +171,39 @@
                 class="text-reset text-none"
                 target="_blank"
               >
+             
                 <div class="watch watch-youtube">
                   <i class="fa-brands fa-youtube"></i>
-                  <span class="ms-2">Watch now on Youtube</span>
+                  <span class="ms-2">Watch now on spotify</span>
                 </div>
-              </a>
-            </div>
-          </div>
-        </div>
-        @else
-        <div
-          class="col-12 col-md-6 col-lg-4 my-4 d-flex justify-content-center align-items-center"
-        >
-          <div class="card my-4 mx-2 spotify-background song-card">
+              @else
+              <div class="card my-4 mx-2 spotify-background song-card">
             <div class="card-body">
-              <a href="{{route('song',['songdetails'=>$songadded])}}">
+              <a href="{{route('song',['songdetails'=>$songadded])}}"> <!--songdetails is the one in {} at in the url (route)-->
                 <h5 class="card-title song-title song-title-spotify">
-                {{$songadded-> songtitle}}
+                  {{$songadded-> songtitle}}
                 </h5>
               </a>
               <h6 class="card-subtitle mb-2 text-muted">{{$songadded-> artist}}</h6>
               <p class="card-text my-3 mb-4">
-                {{$songadded-> description}}
+              {{$songadded-> description}}
               </p>
               <a
                 href="{{$songadded-> songlink}}"
                 class="text-reset text-none"
                 target="_blank"
               >
-                <div class="watch watch-spotify">
+             
+               <div class="watch watch-spotify">
                   <i class="fa-brands fa-spotify"></i>
-                  <span class="ms-2">Listen now on Spotify</span>
+                  <span class="ms-2">Watch now on spotify</span>
                 </div>
+              @endif
               </a>
             </div>
           </div>
         </div>
-        @endif
+        
       @endforeach
       </div>
     </section>
